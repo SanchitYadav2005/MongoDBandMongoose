@@ -21,9 +21,18 @@ const productSchema = new mongoose.Schema(
         price:{
             type: Number,
             required: true
+        },
+        onSale:{
+            type: Boolean,
+            default: true
         }
     }
 )
+
+productSchema.methods.toggleSale = function () {
+    this.onSale = !this.onSale // this will toggle onSale to the opposite of what the value is defined.
+    return this.save(); // this will save it into model.
+};
 
 const Product = mongoose.model('Product', productSchema);
 
@@ -36,4 +45,18 @@ bike.save()
     .catch((err)=>{
         console.log("error");
         console.log(err)
-    })
+    });
+
+// working with instanse methods.
+
+
+// applying the method 
+
+const sale = async () => {
+    const foundProduct = await Product.findOne({name: 'mountain bike'});
+    console.log(foundProduct);
+    await foundProduct.toggleSale();
+    console.log(foundProduct)
+};
+
+sale();
