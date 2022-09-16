@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema(
     {
         name:{
             type: String,
-            required: true
+            required: true // there are many more validators you can search on mongoose docs.
         },
         price:{
             type: Number,
@@ -29,9 +29,9 @@ const Product = mongoose.model('Product', productSchema);
 
 const bike = new Product({name: 'mountain bike', price: 455});
 bike.save()
-    .then(()=>{
+    .then(data=>{
         console.log("worked");
-        console.log(bike)
+        console.log(data)
     })
     .catch((err)=>{
         console.log("error");
