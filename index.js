@@ -25,8 +25,18 @@ const ironman = new Movie({
     title: "Iron Man",
     year: 2007,
     score: 9,
-    raging: "R"
+    rating: "R"
 });
-ironman.save()
+
+// we can insert many thing at a time .
+
+Movie.insertMany([
+    {title: "captian america", year: 2014, score: 9.4, rating: "S" },
+    {title: "Avengers", year: 2012, score: 9.9, rating: "S" },
+    {title: "Vikram", year: 2022, score: 9, rating: "S" },
+    {title: "Bhramstra", year: 2022, score: 9.2, rating: "S" },
+    {title: "RRR", year: 2022, score: 9.5, rating: "S" },
+])
+ironman.save();
 
 
